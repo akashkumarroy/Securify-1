@@ -17,7 +17,7 @@ spec:
         kubernetes.io/os: linux
       containers:
       - name: secapp
-        image: secappacr.azurecr.io/secappacr/secapp:latest
+        image: docker.io/akashkumarroy/secapp:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80
