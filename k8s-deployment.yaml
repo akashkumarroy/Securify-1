@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Secapp
+  name: secapp
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: Secapp
+      app: secapp
   template:
     metadata:
       labels:
-        app: Secapp
+        app: secapp
     spec:
       containers:
       - name: Secapp
