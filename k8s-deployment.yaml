@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: secapp
-        image: docker.io/akashkumarroy/secapp:latest
+        image: index.docker.io/akashkumarroy/secapp:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
