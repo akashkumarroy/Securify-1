@@ -12,12 +12,14 @@ spec:
       labels:
         app: secapp-app
     spec:
+      nodeSelector:
+        kubernetes.io/os: linux
       containers:
       - name: my-secapp-app
         image: secappacr.azurecr.io/secappacr/secapp:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 8085
+        - containerPort: 80
 # service type loadbalancer       
 ---
 apiVersion: v1
@@ -29,9 +31,10 @@ metadata:
   name: secapp-app
 spec:
   ports:
-  - port: 8085
+  - name: port80
+    port: 80
     protocol: TCP
-    targetPort: 8085
+    targetPort: 80
   type: LoadBalancer
   selector:
     app: secapp-app
