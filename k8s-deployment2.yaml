@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: secapp
+  namespace: secapp
 spec:
   replicas: 3
   selector:
@@ -25,10 +26,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: secapp-service
+  namespace: secapp
   labels:
     app: secapp-app
     k8s-app: secapp-app
-  name: secapp-app
 spec:
   ports:
   - name: port80
