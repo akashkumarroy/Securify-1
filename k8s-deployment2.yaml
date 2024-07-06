@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: secapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: secapp-app
+  template:
+    metadata:
+      labels:
+        app: secapp-app
+    spec:
+      containers:
+      - name: my-secapp-app
+        image: secappacr.azurecr.io/secappacr/secapp:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8085
+# service type loadbalancer       
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: secapp-app
+    k8s-app: secapp-app
+  name: secapp-app
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 8085
+  type: LoadBalancer
+  selector:
+    app: secapp-app
