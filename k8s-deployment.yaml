@@ -13,7 +13,7 @@ spec:
         app: secapp
     spec:
       containers:
-      - name: Secapp
+      - name: secapp
         image: akashkumarroy/secapp:latest
         imagePullPolicy: Always
         ports:
