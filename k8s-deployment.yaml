@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: netflix
+  name: Secapp
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: netflix
+      app: Secapp
   template:
     metadata:
       labels:
-        app: netflix
+        app: Secapp
     spec:
       containers:
-      - name: netflix
-        image: akashkumarroy/netflix:latest
+      - name: Secapp
+        image: akashkumarroy/secapp:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
@@ -23,10 +23,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: netflix-svc
+  name: secapp-svc
 spec:
   selector:
-    app: netflix
+    app: secapp
   ports:
     - protocol: TCP
       port: 5000
